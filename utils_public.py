@@ -35,9 +35,8 @@ def plot_ratings_histogram(ratings):
 
 def diversity_score(grids, N=100):
     grids_flat = onehot_and_flatten(grids)
-    u = np.unique(grids_flat, axis=0)
     n = grids.shape[1]
-    D = squareform(pdist(u, 'cityblock'))
+    D = squareform(pdist(grids_flat, 'cityblock'))
     return np.sum(D)/(N*(N-1)*n**2*2)
 
 def plot_grid_image(grid, on_ax=None):
